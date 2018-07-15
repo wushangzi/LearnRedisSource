@@ -55,6 +55,7 @@ list *listCreate(void)
 /* Free the whole list.
  *
  * This function can't fail. */
+//释放全部的链表中的对象
 void listRelease(list *list)
 {
     unsigned long len;
@@ -104,6 +105,7 @@ list *listAddNodeHead(list *list, void *value)
  * On error, NULL is returned and no operation is performed (i.e. the
  * list remains unaltered).
  * On success the 'list' pointer you pass to the function is returned. */
+//在尾部增加一个值
 list *listAddNodeTail(list *list, void *value)
 {
     listNode *node;
@@ -124,6 +126,7 @@ list *listAddNodeTail(list *list, void *value)
     return list;
 }
 
+//插入一个listnode
 list *listInsertNode(list *list, listNode *old_node, void *value, int after) {
     listNode *node;
 
@@ -157,6 +160,7 @@ list *listInsertNode(list *list, listNode *old_node, void *value, int after) {
  * It's up to the caller to free the private value of the node.
  *
  * This function can't fail. */
+//删除链表中指定的指定listnode
 void listDelNode(list *list, listNode *node)
 {
     if (node->prev)
@@ -176,6 +180,7 @@ void listDelNode(list *list, listNode *node)
  * call to listNext() will return the next element of the list.
  *
  * This function can't fail. */
+//获取链表的迭代器
 listIter *listGetIterator(list *list, int direction)
 {
     listIter *iter;
@@ -190,6 +195,7 @@ listIter *listGetIterator(list *list, int direction)
 }
 
 /* Release the iterator memory */
+//释放迭代器
 void listReleaseIterator(listIter *iter) {
     zfree(iter);
 }
@@ -280,6 +286,7 @@ list *listDup(list *orig)
  * On success the first matching node pointer is returned
  * (search starts from head). If no matching node exists
  * NULL is returned. */
+//在链表中查找KEY值
 listNode *listSearchKey(list *list, void *key)
 {
     listIter iter;
@@ -305,6 +312,7 @@ listNode *listSearchKey(list *list, void *key)
  * and so on. Negative integers are used in order to count
  * from the tail, -1 is the last element, -2 the penultimate
  * and so on. If the index is out of range NULL is returned. */
+//返回链表中指定位置的对象
 listNode *listIndex(list *list, long index) {
     listNode *n;
 
@@ -320,6 +328,7 @@ listNode *listIndex(list *list, long index) {
 }
 
 /* Rotate the list removing the tail node and inserting it to the head. */
+//使list循环
 void listRotate(list *list) {
     listNode *tail = list->tail;
 

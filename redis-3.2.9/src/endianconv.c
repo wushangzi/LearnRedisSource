@@ -46,6 +46,7 @@
 
 /* Toggle the 16 bit unsigned integer pointed by *p from little endian to
  * big endian */
+//转化16位无符号整形从小端到大端
 void memrev16(void *p) {
     unsigned char *x = p, t;
 
@@ -56,6 +57,7 @@ void memrev16(void *p) {
 
 /* Toggle the 32 bit unsigned integer pointed by *p from little endian to
  * big endian */
+//转化32位无符号整形从小端到大端
 void memrev32(void *p) {
     unsigned char *x = p, t;
 
@@ -69,6 +71,7 @@ void memrev32(void *p) {
 
 /* Toggle the 64 bit unsigned integer pointed by *p from little endian to
  * big endian */
+//转化64位无符号整形从小端到大端
 void memrev64(void *p) {
     unsigned char *x = p, t;
 
