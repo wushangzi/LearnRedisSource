@@ -97,6 +97,7 @@ robj *createStringObject(const char *ptr, size_t len) {
         return createRawStringObject(ptr,len);
 }
 
+//创建一个从long long对象中转化的对象
 robj *createStringObjectFromLongLong(long long value) {
     robj *o;
     if (value >= 0 && value < OBJ_SHARED_INTEGERS) {
@@ -164,6 +165,7 @@ robj *createStringObjectFromLongDouble(long double value, int humanfriendly) {
  * will always result in a fresh object that is unshared (refcount == 1).
  *
  * The resulting object always has refcount set to 1. */
+//复制一个robj对象
 robj *dupStringObject(robj *o) {
     robj *d;
 
