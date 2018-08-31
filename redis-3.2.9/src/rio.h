@@ -37,6 +37,7 @@
 #include "sds.h"
 
 struct _rio {
+	      //后端函数
     /* Backend functions.
      * Since this functions do not tolerate short writes or reads the return
      * value is simplified to: zero on error, non zero on complete success. */

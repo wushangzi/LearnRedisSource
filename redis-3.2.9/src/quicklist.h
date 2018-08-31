@@ -42,6 +42,7 @@
  * attempted_compress: 1 bit, boolean, used for verifying during testing.
  * extra: 12 bits, free for future use; pads out the remainder of 32 bits */
 //该结构体始终是32位存在
+//一个双向链表的存在
 typedef struct quicklistNode {
     struct quicklistNode *prev;
     struct quicklistNode *next;

@@ -3949,7 +3949,7 @@ int main(int argc, char **argv) {
     struct timeval tv;
     int j;
 
-#ifdef REDIS_TEST
+#ifdef REDIS_TEST //测试代码，如果是测试，就执行本段代码
     if (argc == 3 && !strcasecmp(argv[1], "test")) {
         if (!strcasecmp(argv[2], "ziplist")) {
             return ziplistTest(argc, argv);
@@ -3992,10 +3992,12 @@ int main(int argc, char **argv) {
     printf("id is :%d",getpid());
     /* Store the executable path and arguments in a safe place in order
      * to be able to restart the server later. */
+    //保存执行路径和参数为了稍后重启服务
     server.executable = getAbsolutePath(argv[0]);
     server.exec_argv = zmalloc(sizeof(char*)*(argc+1));
     server.exec_argv[argc] = NULL;
-    for (j = 0; j < argc; j++) server.exec_argv[j] = zstrdup(argv[j]);
+    for (j = 0; j < argc; j++)
+    	server.exec_argv[j] = zstrdup(argv[j]);
 
     /* We need to init sentinel right now as parsing the configuration file
      * in sentinel mode will have the effect of populating the sentinel
@@ -4072,6 +4074,7 @@ int main(int argc, char **argv) {
                 "Sentinel needs config file on disk to save state.  Exiting...");
             exit(1);
         }
+          //重置服务并保存参数
         resetServerSaveParams();
         loadServerConfig(configfile,options);
         sdsfree(options);
